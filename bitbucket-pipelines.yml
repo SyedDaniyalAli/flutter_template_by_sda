@@ -1,0 +1,35 @@
+image: gmeligio/flutter-android:3.27.3
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Cleaning
+          script:
+            - flutter clean
+      - step:
+          name: Installation
+          script:
+            - flutter --version
+            - flutter pub get
+            - dart run build_runner build --delete-conflicting-outputs
+      - step:
+          name: Build
+          script:
+            - flutter config --enable-web
+            - flutter build web --release
+          artifacts:
+            - build/** # Save build for next steps
+      - step:
+          name: Deploy to server
+          image: debian:latest # Using a separate image with rsync available
+          deployment: staging
+          script:
+            - apt-get update && apt-get install -y rsync openssh-client
+            - echo "$(ls -la)"
+            - echo "$(ls -la build)"
+            - echo "Starting deployment to RunCloud server..."
+
+            # Use rsync to copy the new build files to the server
+            - rsync -avz --delete build/web/ runcloud@172.105.110.63:/home/runcloud/webapps/innuinactun-dictionary-user/
+            - echo "Deployment complete"
