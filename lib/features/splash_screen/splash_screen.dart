@@ -47,7 +47,6 @@ class _SplashScreenState extends State<SplashScreen> {
                         FittedBox(
                           child: Text(
                             AppLocalizations.of(context)!.app_name,
-                            // 'Inuinnaqtun Dictionary',
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
