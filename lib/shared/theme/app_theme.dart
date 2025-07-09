@@ -27,6 +27,7 @@ class AppTheme {
   ///bodyLarge : font size 16,
   ///bodyMedium : font size 14,
   ///bodySmall : font size 10,
+  static const String fontFamily = 'Satoshi';
 
   ThemeData kLightTheme = ThemeData(
     useMaterial3: true,
@@ -85,10 +86,10 @@ class AppTheme {
         backgroundColor: WidgetStateProperty.all(AppColors.appWhiteColor),
       ),
     ),
-    fontFamily: "Satoshi",
+    fontFamily: fontFamily,
     textTheme: const TextTheme(
       displayLarge: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 40,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -96,7 +97,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       displayMedium: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 36,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -104,7 +105,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       displaySmall: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 32,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -112,7 +113,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       headlineLarge: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 28,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -120,7 +121,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       headlineMedium: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 24,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -128,7 +129,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       headlineSmall: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 20,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -136,7 +137,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       titleLarge: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 18,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -144,7 +145,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       titleMedium: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 16,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -152,7 +153,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       titleSmall: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 14,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -160,7 +161,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       labelLarge: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 16,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -168,7 +169,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       labelMedium: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 14,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -176,7 +177,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       labelSmall: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 12,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -184,7 +185,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       bodyLarge: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 16,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -192,7 +193,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       bodyMedium: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 14,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -200,7 +201,7 @@ class AppTheme {
         color: AppColors.textColor,
       ),
       bodySmall: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 12,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -229,7 +230,7 @@ class AppTheme {
 
   // Dark theme~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ThemeData kDarkTheme = ThemeData(
-    fontFamily: "Satoshi",
+    fontFamily: fontFamily,
     useMaterial3: true,
     primaryColor: AppColors.primary,
     splashColor: Colors.transparent,
@@ -364,7 +365,7 @@ class AppTheme {
     ),
     textTheme: const TextTheme(
       displayLarge: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 40,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -372,7 +373,7 @@ class AppTheme {
         color: Colors.white,
       ),
       displayMedium: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 36,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -380,7 +381,7 @@ class AppTheme {
         color: Colors.white,
       ),
       displaySmall: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 32,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -388,7 +389,7 @@ class AppTheme {
         color: Colors.white,
       ),
       headlineLarge: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 28,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -396,7 +397,7 @@ class AppTheme {
         color: Colors.white,
       ),
       headlineMedium: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 24,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -404,7 +405,7 @@ class AppTheme {
         color: Colors.white,
       ),
       headlineSmall: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 20,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -412,7 +413,7 @@ class AppTheme {
         color: Colors.white,
       ),
       titleLarge: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 18,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -420,7 +421,7 @@ class AppTheme {
         color: Colors.white,
       ),
       titleMedium: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 16,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -428,7 +429,7 @@ class AppTheme {
         color: Colors.white,
       ),
       titleSmall: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 14,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -436,7 +437,7 @@ class AppTheme {
         color: Colors.white,
       ),
       labelLarge: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 16,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -444,7 +445,7 @@ class AppTheme {
         color: Colors.white,
       ),
       labelMedium: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 14,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -452,7 +453,7 @@ class AppTheme {
         color: Colors.white,
       ),
       labelSmall: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 12,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -461,7 +462,7 @@ class AppTheme {
         height: 2,
       ),
       bodyLarge: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 16,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -469,7 +470,7 @@ class AppTheme {
         color: Colors.white,
       ),
       bodyMedium: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 14,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
@@ -477,7 +478,7 @@ class AppTheme {
         color: Colors.white,
       ),
       bodySmall: TextStyle(
-        fontFamily: "Satoshi",
+        fontFamily: fontFamily,
         fontSize: 10,
         fontStyle: FontStyle.normal,
         textBaseline: TextBaseline.alphabetic,
