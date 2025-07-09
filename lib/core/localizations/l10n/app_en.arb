@@ -1,6 +1,9 @@
 {
   "app_name": "Flutter template by SDA",
   "english": "English",
-  "app_slogan": "Flutter template by SDA"
+  "app_slogan": "Flutter template by SDA",
+  "page_not_found_text": "404 - Page Not Found",
+  "this_page_does_not_exist": "Oops! This page doesn't exist."
+
 }
 
