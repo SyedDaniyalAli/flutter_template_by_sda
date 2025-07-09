@@ -111,6 +111,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Flutter template by SDA'**
   String get app_slogan;
+
+  /// No description provided for @page_not_found_text.
+  ///
+  /// In en, this message translates to:
+  /// **'404 - Page Not Found'**
+  String get page_not_found_text;
+
+  /// No description provided for @this_page_does_not_exist.
+  ///
+  /// In en, this message translates to:
+  /// **'Oops! This page doesn\'t exist.'**
+  String get this_page_does_not_exist;
 }
 
 class _AppLocalizationsDelegate
