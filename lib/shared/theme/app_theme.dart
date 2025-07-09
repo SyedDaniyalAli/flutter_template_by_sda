@@ -9,6 +9,161 @@ class AppTheme {
 
   static const String fontFamily = 'Satoshi';
 
+  // Shared ButtonStyle
+  static final ButtonStyle _buttonStyle = ButtonStyle(
+    mouseCursor: WidgetStateProperty.all(SystemMouseCursors.click),
+  );
+
+  // Shared TextTheme for light and dark, with color as parameter
+  static TextTheme _textTheme(Color color) => TextTheme(
+    displayLarge: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 40,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    displayMedium: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 36,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    displaySmall: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 32,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    headlineLarge: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 28,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    headlineMedium: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 24,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    headlineSmall: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 20,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    titleLarge: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 18,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    titleMedium: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 16,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    titleSmall: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 14,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    labelLarge: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 16,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    labelMedium: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 14,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    labelSmall: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 12,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+      height: color == Colors.white ? 2 : null,
+    ),
+    bodyLarge: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 16,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    bodyMedium: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 14,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: color == Colors.white ? 10 : 12,
+      fontStyle: FontStyle.normal,
+      textBaseline: TextBaseline.alphabetic,
+      leadingDistribution: TextLeadingDistribution.proportional,
+      color: color,
+    ),
+  );
+
+  // Shared PopupMenuThemeData
+  static final PopupMenuThemeData _popupMenuTheme = PopupMenuThemeData(
+    color: AppColors.appWhiteColor,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    textStyle: const TextStyle(color: Colors.black, fontSize: 16),
+  );
+
+  // Shared DropdownMenuThemeData
+  static final DropdownMenuThemeData _dropdownMenuTheme = DropdownMenuThemeData(
+    menuStyle: MenuStyle(
+      backgroundColor: WidgetStateProperty.all(Colors.white),
+      surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
+      shape: WidgetStateProperty.all(
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      ),
+    ),
+  );
+
+  // Shared MenuThemeData
+  static final MenuThemeData _menuTheme = MenuThemeData(
+    style: MenuStyle(
+      backgroundColor: WidgetStateProperty.all(AppColors.appWhiteColor),
+    ),
+  );
+
   ThemeData kLightTheme = ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: AppColors.bodyColor,
@@ -18,21 +173,9 @@ class AppTheme {
       thickness: 0.5,
       color: AppColors.appTextGreyColor,
     ),
-    textButtonTheme: TextButtonThemeData(
-      style: ButtonStyle(
-        mouseCursor: WidgetStateProperty.all(SystemMouseCursors.click),
-      ),
-    ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        mouseCursor: WidgetStateProperty.all(SystemMouseCursors.click),
-      ),
-    ),
-    outlinedButtonTheme: OutlinedButtonThemeData(
-      style: ButtonStyle(
-        mouseCursor: WidgetStateProperty.all(SystemMouseCursors.click),
-      ),
-    ),
+    textButtonTheme: TextButtonThemeData(style: _buttonStyle),
+    elevatedButtonTheme: ElevatedButtonThemeData(style: _buttonStyle),
+    outlinedButtonTheme: OutlinedButtonThemeData(style: _buttonStyle),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: AppColors.primary,
     ),
@@ -40,155 +183,11 @@ class AppTheme {
       backgroundColor: AppColors.appWhiteColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     ),
-    popupMenuTheme: PopupMenuThemeData(
-      color: AppColors.appWhiteColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      textStyle: const TextStyle(
-        color: Colors.black, // Text color
-        fontSize: 16,
-      ),
-    ),
-    dropdownMenuTheme: DropdownMenuThemeData(
-      menuStyle: MenuStyle(
-        backgroundColor: WidgetStateProperty.all(
-          Colors.white,
-        ), // Set the dropdown menu background color
-        surfaceTintColor: WidgetStateProperty.all(
-          Colors.transparent,
-        ), // To avoid overlay tint on surfaces
-        shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        ),
-      ),
-    ),
-    menuTheme: MenuThemeData(
-      style: MenuStyle(
-        backgroundColor: WidgetStateProperty.all(AppColors.appWhiteColor),
-      ),
-    ),
+    popupMenuTheme: _popupMenuTheme,
+    dropdownMenuTheme: _dropdownMenuTheme,
+    menuTheme: _menuTheme,
     fontFamily: fontFamily,
-    textTheme: const TextTheme(
-      displayLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 40,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      displayMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 36,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      displaySmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 32,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      headlineLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 28,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      headlineMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 24,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      headlineSmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 20,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      titleLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 18,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      titleMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 16,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      titleSmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 14,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      labelLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 16,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      labelMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 14,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      labelSmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 12,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      bodyLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 16,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      bodyMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 14,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-      bodySmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 12,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: AppColors.textColor,
-      ),
-    ),
+    textTheme: _textTheme(AppColors.textColor),
     switchTheme: const SwitchThemeData(
       thumbColor: WidgetStatePropertyAll(AppColors.appWhiteColor),
       trackOutlineColor: WidgetStatePropertyAll(AppColors.primary),
@@ -208,7 +207,6 @@ class AppTheme {
     ),
   );
 
-  // Dark theme~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ThemeData kDarkTheme = ThemeData(
     fontFamily: fontFamily,
     useMaterial3: true,
@@ -220,16 +218,8 @@ class AppTheme {
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: AppColors.primary,
     ),
-    textButtonTheme: TextButtonThemeData(
-      style: ButtonStyle(
-        mouseCursor: WidgetStateProperty.all(SystemMouseCursors.click),
-      ),
-    ),
-    outlinedButtonTheme: OutlinedButtonThemeData(
-      style: ButtonStyle(
-        mouseCursor: WidgetStateProperty.all(SystemMouseCursors.click),
-      ),
-    ),
+    textButtonTheme: TextButtonThemeData(style: _buttonStyle),
+    outlinedButtonTheme: OutlinedButtonThemeData(style: _buttonStyle),
     datePickerTheme: const DatePickerThemeData(
       todayBackgroundColor: WidgetStatePropertyAll(Colors.transparent),
       todayForegroundColor: WidgetStatePropertyAll(AppColors.primary),
@@ -247,7 +237,6 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        // elevation: MaterialStatePropertyAll(0),
         mouseCursor: WidgetStateProperty.all(SystemMouseCursors.click),
         minimumSize: WidgetStatePropertyAll(Size(double.infinity, 44)),
         maximumSize: WidgetStatePropertyAll(Size(double.infinity, 44)),
@@ -255,7 +244,6 @@ class AppTheme {
         backgroundColor: WidgetStatePropertyAll(AppColors.onBackground),
         shadowColor: WidgetStatePropertyAll(Colors.transparent),
         surfaceTintColor: WidgetStatePropertyAll(Colors.transparent),
-        // foregroundColor: MaterialStatePropertyAll(AppColors.onBackground),
       ),
     ),
     cardTheme: CardThemeData(
@@ -263,32 +251,9 @@ class AppTheme {
       color: AppColors.onBackground,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     ),
-    popupMenuTheme: PopupMenuThemeData(
-      color: AppColors.appWhiteColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      textStyle: const TextStyle(
-        color: Colors.black, // Text color
-        fontSize: 16,
-      ),
-    ),
-    dropdownMenuTheme: DropdownMenuThemeData(
-      menuStyle: MenuStyle(
-        backgroundColor: WidgetStateProperty.all(
-          Colors.white,
-        ), // Set the dropdown menu background color
-        surfaceTintColor: WidgetStateProperty.all(
-          Colors.transparent,
-        ), // To avoid overlay tint on surfaces
-        shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        ),
-      ),
-    ),
-    menuTheme: MenuThemeData(
-      style: MenuStyle(
-        backgroundColor: WidgetStateProperty.all(AppColors.appWhiteColor),
-      ),
-    ),
+    popupMenuTheme: _popupMenuTheme,
+    dropdownMenuTheme: _dropdownMenuTheme,
+    menuTheme: _menuTheme,
     dialogTheme: DialogThemeData(
       backgroundColor: AppColors.appWhiteColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -343,129 +308,7 @@ class AppTheme {
         borderSide: const BorderSide(width: 1, color: AppColors.primary),
       ),
     ),
-    textTheme: const TextTheme(
-      displayLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 40,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      displayMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 36,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      displaySmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 32,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      headlineLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 28,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      headlineMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 24,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      headlineSmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 20,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      titleLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 18,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      titleMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 16,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      titleSmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 14,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      labelLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 16,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      labelMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 14,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      labelSmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 12,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-        height: 2,
-      ),
-      bodyLarge: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 16,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      bodyMedium: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 14,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-      bodySmall: TextStyle(
-        fontFamily: fontFamily,
-        fontSize: 10,
-        fontStyle: FontStyle.normal,
-        textBaseline: TextBaseline.alphabetic,
-        leadingDistribution: TextLeadingDistribution.proportional,
-        color: Colors.white,
-      ),
-    ),
+    textTheme: _textTheme(Colors.white),
     appBarTheme: const AppBarTheme(backgroundColor: AppColors.headerColor),
     colorScheme: const ColorScheme(
       brightness: Brightness.dark,
