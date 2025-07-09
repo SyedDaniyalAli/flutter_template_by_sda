@@ -435,34 +435,5 @@ class MainLayout extends ConsumerWidget {
               )
               : null,
     );
-    // return Flex(
-    //   direction: context.isLargerThanTablet ? Axis.vertical : Axis.horizontal,
-    //   mainAxisSize: MainAxisSize.min,
-    //   children: [
-    //     Padding(
-    //       padding: const EdgeInsets.symmetric(horizontal: 10),
-    //       child: ClickableWidget(
-    //         onTap: () => context.go(route),
-    //         child: FittedBox(
-    //           child: Text(
-    //             title,
-    //             style: const TextStyle(color: Colors.white, fontSize: 16),
-    //           ),
-    //         ),
-    //       ),
-    //     ),
-    //     if (currentLocation == route.split('/').last.toLowerCase())
-    //       RotatedBox(
-    //         quarterTurns: context.isLargerThanTablet ? 0 : 3,
-    //         child: Image.asset(
-    //           AppImages.polygonIcon,
-    //           height: 9,
-    //           width: 9.8,
-    //           // scale: 2.5,
-    //           // fit: BoxFit.fill,
-    //         ),
-    //       ),
-    //   ],
-    // );
   }
 }
