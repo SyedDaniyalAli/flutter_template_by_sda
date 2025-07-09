@@ -4,29 +4,9 @@ import '../constants/constant.dart';
 
 class AppTheme {
   static final AppTheme _instance = AppTheme._internal();
-
-  factory AppTheme() {
-    return _instance;
-  }
-
+  factory AppTheme() => _instance;
   AppTheme._internal();
 
-  ///===== Fonts Notes ========
-  ///displayLarge : font size : 40,
-  ///displayMedium : font size : 36,
-  ///displaySmall : font size : 32,
-  ///headlineLarge : font size : 28,
-  ///headlineMedium : font size 24,
-  ///headlineSmall : font size 20,
-  ///titleLarge : font size 18,
-  ///titleMedium : font size 16,
-  ///titleSmall : font size 14,
-  ///labelLarge : font size : 16,
-  ///labelMedium : font size 14,
-  ///labelSmall : font size 12,
-  ///bodyLarge : font size 16,
-  ///bodyMedium : font size 14,
-  ///bodySmall : font size 10,
   static const String fontFamily = 'Satoshi';
 
   ThemeData kLightTheme = ThemeData(
