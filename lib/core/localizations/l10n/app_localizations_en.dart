@@ -16,4 +16,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get app_slogan => 'Flutter template by SDA';
+
+  @override
+  String get page_not_found_text => '404 - Page Not Found';
+
+  @override
+  String get this_page_does_not_exist => 'Oops! This page doesn\'t exist.';
 }
