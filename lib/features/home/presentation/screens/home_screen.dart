@@ -4,7 +4,6 @@ import 'package:flutter_template_by_sda/shared/utils/extensions/responsive_exten
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/app_navigation/go_router.dart';
-import '../../../../core/app_navigation/route_names.dart';
 import '../../../../shared/constants/constant.dart';
 import '../../../../shared/widgets/clickable_widget.dart';
 import '../../../../shared/widgets/shimmer_effect_widget.dart';
@@ -12,9 +11,8 @@ import '../../../../shared/widgets/text_with_hover_effect.dart';
 import '../../logic/providers/home_provider.dart';
 import '../widgets/toggle_button.dart';
 
-class MainLayout extends ConsumerWidget {
-  final Widget child;
-  MainLayout({super.key, required this.child});
+class HomeScreen extends ConsumerWidget {
+  HomeScreen({super.key});
 
   final currentLocation =
       router.routerDelegate.state.matchedLocation.split('/').last.toLowerCase();
@@ -212,40 +210,14 @@ class MainLayout extends ConsumerWidget {
                           child: Container(
                             color: AppColors.darkBlack,
                             child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  _buildNavItem(
-                                    context,
-                                    'Dictionary Home',
-                                    RouteNames.words,
-                                  ),
-                                  // 3. Can we keep the Dictionary Roots Section as part of the website but hide it for the foreseeable future until it is further populated?"
-                                  // _buildNavItem(context, 'Dictionary Roots',
-                                  //     RouteNames.roots),
-                                  _buildNavItem(
-                                    context,
-                                    'Dictionary Affixes',
-                                    RouteNames.affixes,
-                                  ),
-                                  _buildNavItem(
-                                    context,
-                                    'Sound Guide',
-                                    RouteNames.soundGuide,
-                                  ),
-                                ],
-                              ),
+                              child: Column(children: []),
                             ),
                           ),
                         ),
                       // Right Panel
                       Expanded(
                         flex: isSmallScreen ? 12 : 10,
-                        child: Column(
-                          children: [
-                            const SizedBox(height: 20),
-                            Expanded(child: child),
-                          ],
-                        ),
+                        child: Column(children: [const SizedBox(height: 20)]),
                       ),
                     ],
                   ),
@@ -403,9 +375,6 @@ class MainLayout extends ConsumerWidget {
               decoration: BoxDecoration(color: Colors.black),
               child: Image.asset(AppImages.logo, fit: BoxFit.contain),
             ),
-            _buildNavItem(context, 'Dictionary Home', RouteNames.words),
-            _buildNavItem(context, 'Dictionary Affixes', RouteNames.affixes),
-            _buildNavItem(context, 'Sound Guide', RouteNames.soundGuide),
           ],
         ),
       ),

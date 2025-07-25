@@ -14,19 +14,25 @@ final GoRouter router = GoRouter(
       pageBuilder:
           (context, state) => const NoTransitionPage(child: SplashScreen()),
     ),
-    ShellRoute(
-      builder: (context, state, child) {
-        return MainLayout(child: child);
-      },
-      routes: [
-        // GoRoute(
-        //   path: RouteNames.words,
-        //   pageBuilder:
-        //       (context, state) =>
-        //           const NoTransitionPage(child: SyllabaryScreen()),
-        // ),
-      ],
+
+    GoRoute(
+      path: RouteNames.home,
+      pageBuilder: (context, state) => NoTransitionPage(child: HomeScreen()),
     ),
+    // sub route when we have nested routes
+    // ShellRoute(
+    //   builder: (context, state, child) {
+    //     return MainLayout(child: child);
+    //   },
+    //   routes: [
+    //     // GoRoute(
+    //     //   path: RouteNames.words,
+    //     //   pageBuilder:
+    //     //       (context, state) =>
+    //     //           const NoTransitionPage(child: SyllabaryScreen()),
+    //     // ),
+    //   ],
+    // ),
   ],
   errorBuilder: (context, state) => const NotFoundScreen(),
   redirect: (context, state) {
