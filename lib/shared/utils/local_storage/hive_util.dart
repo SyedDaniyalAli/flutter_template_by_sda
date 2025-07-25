@@ -91,10 +91,8 @@ class HiveUtil {
   /// Close an isolated box safely
   Future<void> closeIsolatedBox(String boxName) async {
     try {
-      final box = await IsolatedHive.openBox(boxName);
-      await box.close();
-      if (_defaultIsolatedBox != null &&
-          await _defaultIsolatedBox!.name == boxName) {
+      if (_defaultIsolatedBox != null && _defaultIsolatedBox!.name == boxName) {
+        await _defaultIsolatedBox!.close();
         _defaultIsolatedBox = null;
       }
     } catch (e) {
