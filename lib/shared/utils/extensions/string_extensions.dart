@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 
-import '../../constants/constant.dart';
+import '../../constants/app_utils.dart';
 
 extension CustomStringExtensions on String {
   String? capitalize() {
@@ -11,33 +11,37 @@ extension CustomStringExtensions on String {
   String formattedDate(BuildContext context) {
     return this == ""
         ? "N/A"
-        : DateFormat("MMM dd, yyyy", Localizations.localeOf(context).toString())
-            .format(DateTime.parse(this).toLocal());
+        : DateFormat(
+          "MMM dd, yyyy",
+          Localizations.localeOf(context).toString(),
+        ).format(DateTime.parse(this).toLocal());
   }
 
   String formattedDateWithMonthAndYear(BuildContext context) {
     return this == ""
         ? "N/A"
-        : DateFormat("yMMM", Localizations.localeOf(context).toString())
-            .format(DateTime.parse(this).toLocal());
+        : DateFormat(
+          "yMMM",
+          Localizations.localeOf(context).toString(),
+        ).format(DateTime.parse(this).toLocal());
   }
 
   String formattedDateAndTime(BuildContext context) {
     return this == ""
         ? "N/A"
-        : DateFormat("MMM dd, yyyy", Localizations.localeOf(context).toString())
-            .add_jm()
-            .format(DateTime.parse(this));
+        : DateFormat(
+          "MMM dd, yyyy",
+          Localizations.localeOf(context).toString(),
+        ).add_jm().format(DateTime.parse(this));
   }
 
   String formattedDateForApiRequest(BuildContext context) {
     return this == ""
         ? "N/A"
-        : DateFormat(AppUtils.dateFormatter,
-                Localizations.localeOf(context).toString())
-            .format(
-            DateTime.parse(this),
-          );
+        : DateFormat(
+          AppUtils.dateFormatter,
+          Localizations.localeOf(context).toString(),
+        ).format(DateTime.parse(this));
   }
 
   String get convertRoutePathToRouteName => replaceAll("/", "");
@@ -56,8 +60,9 @@ extension CustomStringExtensions on String {
   }
 
   bool get isTextAFilePath {
-    RegExp regExp =
-        RegExp("[^\\s]+(.*?)\\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)\$");
+    RegExp regExp = RegExp(
+      "[^\\s]+(.*?)\\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)\$",
+    );
     if (regExp.hasMatch(this)) {
       return true;
     }
@@ -93,8 +98,9 @@ extension StringValidations on String? {
   }
 
   String? validatePassword(BuildContext context) {
-    RegExp regex =
-        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+    RegExp regex = RegExp(
+      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$',
+    );
 
     String password = this!.trim();
     if (password.isEmpty) {
@@ -155,8 +161,9 @@ extension StringValidations on String? {
     required String otherPassword,
     required BuildContext context,
   }) {
-    RegExp regex =
-        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+    RegExp regex = RegExp(
+      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$',
+    );
 
     String password = this!.trim();
     if (password.isEmpty) {
@@ -177,8 +184,9 @@ extension StringValidations on String? {
     // Prevent XSS attacks
     if (this?.contains(RegExp(r'(--|\#|\|)')) == true) {
       return true;
-    } else if (this?.contains(RegExp(
-            r'<script|<iframe|<style|<link|<img|<svg|<canvas|<a[^>]*href')) ==
+    } else if (this?.contains(
+          RegExp(r'<script|<iframe|<style|<link|<img|<svg|<canvas|<a[^>]*href'),
+        ) ==
         true) {
       return true;
     } else {

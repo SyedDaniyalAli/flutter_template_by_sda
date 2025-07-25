@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template_by_sda/shared/constants/app_fonts.dart';
 
 import '../constants/constant.dart';
 
@@ -7,7 +8,7 @@ class AppTheme {
   factory AppTheme() => _instance;
   AppTheme._internal();
 
-  static const String fontFamily = 'Satoshi';
+  static const String fontFamily = AppFonts.appFontFamily;
 
   // Shared ButtonStyle
   static final ButtonStyle _buttonStyle = ButtonStyle(
