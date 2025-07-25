@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       children: [
                         FittedBox(
                           child: Text(
-                            AppLocalizations.of(context)!.app_name,
+                            AppLocalizations.of(context)?.app_name ?? '',
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          AppLocalizations.of(context)!.app_slogan,
+                          AppLocalizations.of(context)?.app_slogan ?? '',
                           style: TextStyle(fontSize: 16),
                         ),
                       ],
