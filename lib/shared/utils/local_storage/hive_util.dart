@@ -16,77 +16,170 @@ class HiveUtil {
 
   /// Initialize Hive with Flutter support
   Future<void> init([List<TypeAdapter>? adapters]) async {
-    final dir = await getApplicationDocumentsDirectory();
-    await Hive.initFlutter(dir.path);
-    if (adapters != null) {
-      for (final adapter in adapters) {
-        Hive.registerAdapter(adapter);
+    try {
+      final dir = await getApplicationDocumentsDirectory();
+      await Hive.initFlutter('${dir.path}/hive');
+      if (adapters != null) {
+        for (final adapter in adapters) {
+          if (!Hive.isAdapterRegistered(adapter.typeId)) {
+            Hive.registerAdapter(adapter);
+          }
+        }
       }
+    } catch (e) {
+      throw HiveError('Failed to initialize Hive: $e');
     }
   }
 
   /// Initialize IsolatedHive with Flutter support for multi-isolate scenarios
   Future<void> initIsolated([List<TypeAdapter>? adapters]) async {
-    final dir = await getApplicationDocumentsDirectory();
-    await IsolatedHive.initFlutter(subDirectory: dir.path);
-    if (adapters != null) {
-      for (final adapter in adapters) {
-        IsolatedHive.registerAdapter(adapter); // Remove await - it returns void
+    try {
+      final dir = await getApplicationDocumentsDirectory();
+      await IsolatedHive.initFlutter(subDirectory: '${dir.path}/isolated_hive');
+      if (adapters != null) {
+        for (final adapter in adapters) {
+          IsolatedHive.registerAdapter(adapter);
+        }
       }
+    } catch (e) {
+      throw HiveError('Failed to initialize IsolatedHive: $e');
     }
   }
 
   /// Open a regular Hive box
   Future<Box<T>> openBox<T>(String boxName) async {
-    final box = await Hive.openBox<T>(boxName);
-    _defaultBox = box; // Set as default box
-    return box;
+    try {
+      if (boxName.isEmpty) {
+        throw ArgumentError('Box name cannot be empty');
+      }
+      final box = await Hive.openBox<T>(boxName);
+      _defaultBox = box;
+      return box;
+    } catch (e) {
+      throw HiveError('Failed to open box "$boxName": $e');
+    }
   }
 
   /// Open an IsolatedHive box for multi-isolate support
   Future<IsolatedBox<T>> openIsolatedBox<T>(String boxName) async {
-    final box = await IsolatedHive.openBox<T>(boxName);
-    _defaultIsolatedBox = box; // Set as default isolated box
-    return box;
+    try {
+      if (boxName.isEmpty) {
+        throw ArgumentError('Box name cannot be empty');
+      }
+      final box = await IsolatedHive.openBox<T>(boxName);
+      _defaultIsolatedBox = box;
+      return box;
+    } catch (e) {
+      throw HiveError('Failed to open isolated box "$boxName": $e');
+    }
   }
 
-  /// Close a box
+  /// Close a box safely
   Future<void> closeBox(String boxName) async {
-    await Hive.box(boxName).close();
+    try {
+      if (Hive.isBoxOpen(boxName)) {
+        await Hive.box(boxName).close();
+        if (_defaultBox != null && _defaultBox!.name == boxName) {
+          _defaultBox = null;
+        }
+      }
+    } catch (e) {
+      throw HiveError('Failed to close box "$boxName": $e');
+    }
   }
 
-  /// Close an isolated box
+  /// Close an isolated box safely
   Future<void> closeIsolatedBox(String boxName) async {
-    final box = await IsolatedHive.openBox(boxName);
-    await box.close();
+    try {
+      final box = await IsolatedHive.openBox(boxName);
+      await box.close();
+      if (_defaultIsolatedBox != null &&
+          await _defaultIsolatedBox!.name == boxName) {
+        _defaultIsolatedBox = null;
+      }
+    } catch (e) {
+      throw HiveError('Failed to close isolated box "$boxName": $e');
+    }
   }
 
-  /// Delete a box from disk
+  /// Delete a box from disk safely
   Future<void> deleteBox(String boxName) async {
-    await Hive.deleteBoxFromDisk(boxName);
+    try {
+      if (Hive.isBoxOpen(boxName)) {
+        await Hive.box(boxName).close();
+      }
+      await Hive.deleteBoxFromDisk(boxName);
+      if (_defaultBox != null && _defaultBox!.name == boxName) {
+        _defaultBox = null;
+      }
+    } catch (e) {
+      throw HiveError('Failed to delete box "$boxName": $e');
+    }
   }
 
   /// Check if box exists
   bool boxExists(String boxName) {
-    return Hive.isBoxOpen(boxName);
+    try {
+      return Hive.isBoxOpen(boxName);
+    } catch (e) {
+      return false;
+    }
   }
 
-  /// Add an object to the box
+  /// Add an object to the box with error handling
   Future<int> add<T>(T value, [Box<T>? box]) async {
-    final targetBox = box ?? _defaultBox as Box<T>;
-    return await targetBox.add(value);
+    try {
+      final targetBox = box ?? _getDefaultBox<T>();
+      return await targetBox.add(value);
+    } catch (e) {
+      throw HiveError('Failed to add value: $e');
+    }
   }
 
-  /// Put an object with a key
+  /// Put an object with a key with error handling
   Future<void> put<T>(dynamic key, T value, [Box<T>? box]) async {
-    final targetBox = box ?? _defaultBox as Box<T>;
-    await targetBox.put(key, value);
+    try {
+      if (key == null) {
+        throw ArgumentError('Key cannot be null');
+      }
+      final targetBox = box ?? _getDefaultBox<T>();
+      await targetBox.put(key, value);
+    } catch (e) {
+      throw HiveError('Failed to put value with key "$key": $e');
+    }
   }
 
-  /// Get an object by key
+  /// Get an object by key with error handling
   Future<T?> get<T>(dynamic key, [Box<T>? box]) async {
-    final targetBox = box ?? _defaultBox as Box<T>;
-    return targetBox.get(key);
+    try {
+      if (key == null) {
+        throw ArgumentError('Key cannot be null');
+      }
+      final targetBox = box ?? _getDefaultBox<T>();
+      return targetBox.get(key);
+    } catch (e) {
+      throw HiveError('Failed to get value with key "$key": $e');
+    }
+  }
+
+  /// Helper method to get default box with null check
+  Box<T> _getDefaultBox<T>() {
+    if (_defaultBox == null) {
+      throw StateError(
+        'No default box is open. Please open a box first using openBox()',
+      );
+    }
+    return _defaultBox as Box<T>;
+  }
+
+  /// Helper method to get default isolated box with null check
+  IsolatedBox<T> _getDefaultIsolatedBox<T>() {
+    if (_defaultIsolatedBox == null) {
+      throw StateError(
+        'No default isolated box is open. Please open an isolated box first using openIsolatedBox()',
+      );
+    }
+    return _defaultIsolatedBox as IsolatedBox<T>;
   }
 
   /// Get all objects
@@ -159,8 +252,12 @@ class HiveUtil {
 
   /// Add an object to the isolated box
   Future<int> addIsolated<T>(T value, [IsolatedBox<T>? box]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    return await targetBox.add(value);
+    try {
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      return await targetBox.add(value);
+    } catch (e) {
+      throw HiveError('Failed to add value to isolated box: $e');
+    }
   }
 
   /// Put an object with a key in isolated box
@@ -169,27 +266,58 @@ class HiveUtil {
     T value, [
     IsolatedBox<T>? box,
   ]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    await targetBox.put(key, value);
+    try {
+      if (key == null) {
+        throw ArgumentError('Key cannot be null');
+      }
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      await targetBox.put(key, value);
+    } catch (e) {
+      throw HiveError(
+        'Failed to put value with key "$key" in isolated box: $e',
+      );
+    }
   }
 
   /// Get an object by key from isolated box
   Future<T?> getIsolated<T>(dynamic key, [IsolatedBox<T>? box]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    return await targetBox.get(key);
+    try {
+      if (key == null) {
+        throw ArgumentError('Key cannot be null');
+      }
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      return await targetBox.get(key);
+    } catch (e) {
+      throw HiveError(
+        'Failed to get value with key "$key" from isolated box: $e',
+      );
+    }
   }
 
   /// Get all objects from isolated box
   Future<List<T>> getAllIsolated<T>([IsolatedBox<T>? box]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    final values = await targetBox.values;
-    return values.toList();
+    try {
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      final values = await targetBox.values;
+      return values.toList();
+    } catch (e) {
+      throw HiveError('Failed to get all values from isolated box: $e');
+    }
   }
 
   /// Get object at index from isolated box
   Future<T?> getAtIsolated<T>(int index, [IsolatedBox<T>? box]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    return await targetBox.getAt(index);
+    try {
+      if (index < 0) {
+        throw ArgumentError('Index cannot be negative');
+      }
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      return await targetBox.getAt(index);
+    } catch (e) {
+      throw HiveError(
+        'Failed to get value at index $index from isolated box: $e',
+      );
+    }
   }
 
   /// Put object at index in isolated box
@@ -198,50 +326,97 @@ class HiveUtil {
     T value, [
     IsolatedBox<T>? box,
   ]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    await targetBox.putAt(index, value);
+    try {
+      if (index < 0) {
+        throw ArgumentError('Index cannot be negative');
+      }
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      await targetBox.putAt(index, value);
+    } catch (e) {
+      throw HiveError(
+        'Failed to put value at index $index in isolated box: $e',
+      );
+    }
   }
 
   /// Delete an object by key from isolated box
   Future<void> deleteIsolated<T>(dynamic key, [IsolatedBox<T>? box]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    await targetBox.delete(key);
+    try {
+      if (key == null) {
+        throw ArgumentError('Key cannot be null');
+      }
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      await targetBox.delete(key);
+    } catch (e) {
+      throw HiveError(
+        'Failed to delete value with key "$key" from isolated box: $e',
+      );
+    }
   }
 
   /// Delete object at index from isolated box
   Future<void> deleteAtIsolated<T>(int index, [IsolatedBox<T>? box]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    await targetBox.deleteAt(index);
+    try {
+      if (index < 0) {
+        throw ArgumentError('Index cannot be negative');
+      }
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      await targetBox.deleteAt(index);
+    } catch (e) {
+      throw HiveError(
+        'Failed to delete value at index $index from isolated box: $e',
+      );
+    }
   }
 
   /// Delete all objects in the isolated box
   Future<void> clearIsolated<T>([IsolatedBox<T>? box]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    await targetBox.clear();
+    try {
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      await targetBox.clear();
+    } catch (e) {
+      throw HiveError('Failed to clear isolated box: $e');
+    }
   }
 
   /// Get all keys from isolated box
   Future<Iterable<dynamic>> getKeysIsolated<T>([IsolatedBox<T>? box]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    return await targetBox.keys;
+    try {
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      return await targetBox.keys;
+    } catch (e) {
+      throw HiveError('Failed to get keys from isolated box: $e');
+    }
   }
 
   /// Get isolated box length
   Future<int> getLengthIsolated<T>([IsolatedBox<T>? box]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    return await targetBox.length;
+    try {
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      return await targetBox.length;
+    } catch (e) {
+      throw HiveError('Failed to get length of isolated box: $e');
+    }
   }
 
   /// Check if isolated box is empty
   Future<bool> isEmptyIsolated<T>([IsolatedBox<T>? box]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    return await targetBox.isEmpty;
+    try {
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      return await targetBox.isEmpty;
+    } catch (e) {
+      throw HiveError('Failed to check if isolated box is empty: $e');
+    }
   }
 
   /// Check if isolated box is not empty
   Future<bool> isNotEmptyIsolated<T>([IsolatedBox<T>? box]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    return !(await targetBox.isEmpty);
+    try {
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      return !(await targetBox.isEmpty);
+    } catch (e) {
+      throw HiveError('Failed to check if isolated box is not empty: $e');
+    }
   }
 
   /// Check if key exists in isolated box
@@ -249,8 +424,17 @@ class HiveUtil {
     dynamic key, [
     IsolatedBox<T>? box,
   ]) async {
-    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
-    return await targetBox.containsKey(key);
+    try {
+      if (key == null) {
+        throw ArgumentError('Key cannot be null');
+      }
+      final targetBox = box ?? _getDefaultIsolatedBox<T>();
+      return await targetBox.containsKey(key);
+    } catch (e) {
+      throw HiveError(
+        'Failed to check if key "$key" exists in isolated box: $e',
+      );
+    }
   }
 
   /// Open a BoxCollection
@@ -258,12 +442,21 @@ class HiveUtil {
     Set<String> boxNames, {
     String? collectionName,
   }) async {
-    final dir = await getApplicationDocumentsDirectory();
-    return await BoxCollection.open(
-      collectionName ?? 'default_collection',
-      boxNames,
-      path: dir.path,
-    );
+    try {
+      if (boxNames.isEmpty) {
+        throw ArgumentError('Box names set cannot be empty');
+      }
+      final dir = await getApplicationDocumentsDirectory();
+      return await BoxCollection.open(
+        collectionName ?? 'default_collection',
+        boxNames,
+        path: dir.path,
+      );
+    } catch (e) {
+      throw HiveError(
+        'Failed to open BoxCollection "${collectionName ?? 'default_collection'}": $e',
+      );
+    }
   }
 
   /// Open a BoxCollection with encryption support
@@ -272,13 +465,25 @@ class HiveUtil {
     required String collectionName,
     required HiveCipher key,
   }) async {
-    final dir = await getApplicationDocumentsDirectory();
-    return await BoxCollection.open(
-      collectionName,
-      boxNames,
-      path: dir.path,
-      key: key,
-    );
+    try {
+      if (boxNames.isEmpty) {
+        throw ArgumentError('Box names set cannot be empty');
+      }
+      if (collectionName.isEmpty) {
+        throw ArgumentError('Collection name cannot be empty');
+      }
+      final dir = await getApplicationDocumentsDirectory();
+      return await BoxCollection.open(
+        collectionName,
+        boxNames,
+        path: dir.path,
+        key: key,
+      );
+    } catch (e) {
+      throw HiveError(
+        'Failed to open encrypted BoxCollection "$collectionName": $e',
+      );
+    }
   }
 
   /// Store objects in BoxCollection
@@ -288,8 +493,20 @@ class HiveUtil {
     dynamic key,
     T value,
   ) async {
-    final box = await collection.openBox<T>(boxName);
-    await box.put(key, value);
+    try {
+      if (boxName.isEmpty) {
+        throw ArgumentError('Box name cannot be empty');
+      }
+      if (key == null) {
+        throw ArgumentError('Key cannot be null');
+      }
+      final box = await collection.openBox<T>(boxName);
+      await box.put(key, value);
+    } catch (e) {
+      throw HiveError(
+        'Failed to put value with key "$key" in collection box "$boxName": $e',
+      );
+    }
   }
 
   /// Get object from BoxCollection
@@ -298,8 +515,20 @@ class HiveUtil {
     String boxName,
     dynamic key,
   ) async {
-    final box = await collection.openBox<T>(boxName);
-    return await box.get(key);
+    try {
+      if (boxName.isEmpty) {
+        throw ArgumentError('Box name cannot be empty');
+      }
+      if (key == null) {
+        throw ArgumentError('Key cannot be null');
+      }
+      final box = await collection.openBox<T>(boxName);
+      return await box.get(key);
+    } catch (e) {
+      throw HiveError(
+        'Failed to get value with key "$key" from collection box "$boxName": $e',
+      );
+    }
   }
 
   /// Delete object from BoxCollection
@@ -308,8 +537,20 @@ class HiveUtil {
     String boxName,
     dynamic key,
   ) async {
-    final box = await collection.openBox<T>(boxName);
-    await box.delete(key);
+    try {
+      if (boxName.isEmpty) {
+        throw ArgumentError('Box name cannot be empty');
+      }
+      if (key == null) {
+        throw ArgumentError('Key cannot be null');
+      }
+      final box = await collection.openBox<T>(boxName);
+      await box.delete(key);
+    } catch (e) {
+      throw HiveError(
+        'Failed to delete value with key "$key" from collection box "$boxName": $e',
+      );
+    }
   }
 
   /// Get all objects from BoxCollection
@@ -317,9 +558,18 @@ class HiveUtil {
     BoxCollection collection,
     String boxName,
   ) async {
-    final box = await collection.openBox<T>(boxName);
-    final valuesMap = await box.getAllValues();
-    return valuesMap.values.cast<T>().toList();
+    try {
+      if (boxName.isEmpty) {
+        throw ArgumentError('Box name cannot be empty');
+      }
+      final box = await collection.openBox<T>(boxName);
+      final valuesMap = await box.getAllValues();
+      return valuesMap.values.cast<T>().toList();
+    } catch (e) {
+      throw HiveError(
+        'Failed to get all values from collection box "$boxName": $e',
+      );
+    }
   }
 
   /// Get multiple objects by keys from BoxCollection
@@ -328,8 +578,20 @@ class HiveUtil {
     String boxName,
     List<String> keys,
   ) async {
-    final box = await collection.openBox<T>(boxName);
-    return await box.getAll(keys);
+    try {
+      if (boxName.isEmpty) {
+        throw ArgumentError('Box name cannot be empty');
+      }
+      if (keys.isEmpty) {
+        throw ArgumentError('Keys list cannot be empty');
+      }
+      final box = await collection.openBox<T>(boxName);
+      return await box.getAll(keys);
+    } catch (e) {
+      throw HiveError(
+        'Failed to get multiple values from collection box "$boxName": $e',
+      );
+    }
   }
 
   /// Get all keys from BoxCollection
@@ -337,8 +599,17 @@ class HiveUtil {
     BoxCollection collection,
     String boxName,
   ) async {
-    final box = await collection.openBox(boxName);
-    return await box.getAllKeys();
+    try {
+      if (boxName.isEmpty) {
+        throw ArgumentError('Box name cannot be empty');
+      }
+      final box = await collection.openBox(boxName);
+      return await box.getAllKeys();
+    } catch (e) {
+      throw HiveError(
+        'Failed to get all keys from collection box "$boxName": $e',
+      );
+    }
   }
 
   /// Get all values as Map from BoxCollection
@@ -346,8 +617,17 @@ class HiveUtil {
     BoxCollection collection,
     String boxName,
   ) async {
-    final box = await collection.openBox<T>(boxName);
-    return await box.getAllValues();
+    try {
+      if (boxName.isEmpty) {
+        throw ArgumentError('Box name cannot be empty');
+      }
+      final box = await collection.openBox<T>(boxName);
+      return await box.getAllValues();
+    } catch (e) {
+      throw HiveError(
+        'Failed to get all values map from collection box "$boxName": $e',
+      );
+    }
   }
 
   /// Delete multiple objects from BoxCollection
@@ -356,8 +636,20 @@ class HiveUtil {
     String boxName,
     List<String> keys,
   ) async {
-    final box = await collection.openBox(boxName);
-    await box.deleteAll(keys);
+    try {
+      if (boxName.isEmpty) {
+        throw ArgumentError('Box name cannot be empty');
+      }
+      if (keys.isEmpty) {
+        throw ArgumentError('Keys list cannot be empty');
+      }
+      final box = await collection.openBox(boxName);
+      await box.deleteAll(keys);
+    } catch (e) {
+      throw HiveError(
+        'Failed to delete multiple values from collection box "$boxName": $e',
+      );
+    }
   }
 
   /// Clear all data from BoxCollection box
@@ -365,8 +657,15 @@ class HiveUtil {
     BoxCollection collection,
     String boxName,
   ) async {
-    final box = await collection.openBox(boxName);
-    await box.clear();
+    try {
+      if (boxName.isEmpty) {
+        throw ArgumentError('Box name cannot be empty');
+      }
+      final box = await collection.openBox(boxName);
+      await box.clear();
+    } catch (e) {
+      throw HiveError('Failed to clear collection box "$boxName": $e');
+    }
   }
 
   /// Execute operations in a transaction
@@ -381,10 +680,17 @@ class HiveUtil {
     List<String> boxNames, {
     bool readOnly = false,
   }) async {
-    await collection.transaction(
-      () async => await operations(),
-      boxNames: boxNames,
-      readOnly: readOnly,
-    );
+    try {
+      if (boxNames.isEmpty) {
+        throw ArgumentError('Box names list cannot be empty');
+      }
+      await collection.transaction(
+        () async => await operations(),
+        boxNames: boxNames,
+        readOnly: readOnly,
+      );
+    } catch (e) {
+      throw HiveError('Failed to execute transaction on boxes $boxNames: $e');
+    }
   }
 }
