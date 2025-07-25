@@ -81,11 +81,6 @@ class HomeNotifier extends _$HomeNotifier {
     }
   }
 
-  void setSelectedSyllabary(String title) {
-    searchContoller.text = title;
-    search();
-  }
-
   void search() {
     state = state.copyWith(searchResponse: const AsyncValue.loading());
 
@@ -103,14 +98,6 @@ class HomeNotifier extends _$HomeNotifier {
         ),
       );
     });
-  }
-
-  void toggleSearchByEnglishDefinition(bool isToggled) {
-    state = state.copyWith(
-      searchResponse: const AsyncValue.loading(),
-      searchByDefinition: isToggled,
-    );
-    search();
   }
 
   void clearSearch() {

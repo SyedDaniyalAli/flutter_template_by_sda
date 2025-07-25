@@ -24,11 +24,6 @@ class AppImages {
   AppImages._internal();
 
   static const String logo = "$_imageDirectory/logo.png";
-  static const String logoOld = "$_imageDirectory/ic_logo.png";
-  static const String headerIcon = "$_imageDirectory/ic_header.png";
-  static const String bannerIcon = "$_imageDirectory/ic_banner.png";
-  static const String polygonIcon = "$_imageDirectory/polygon.png";
-  static const String webBannerIcon = "$_imageDirectory/web_banner_ic.png";
 }
 
 class AppFonts {

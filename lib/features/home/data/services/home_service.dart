@@ -13,7 +13,7 @@ class HomeService {
     try {
       final dioClient = getItInstance<DioClient>();
       final response = await dioClient.get(
-        ApiRoutes.search,
+        ApiRoutes.dummyEndpoint,
         queryParameters: req.toQueryParameters(),
       );
 
