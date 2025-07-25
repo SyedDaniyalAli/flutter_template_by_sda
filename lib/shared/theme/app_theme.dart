@@ -165,7 +165,7 @@ class AppTheme {
     ),
   );
 
-  ThemeData kLightTheme = ThemeData(
+  static ThemeData kLightTheme = ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: AppColors.bodyColor,
     appBarTheme: const AppBarTheme(backgroundColor: AppColors.headerColor),
@@ -208,7 +208,7 @@ class AppTheme {
     ),
   );
 
-  ThemeData kDarkTheme = ThemeData(
+  static ThemeData kDarkTheme = ThemeData(
     fontFamily: fontFamily,
     useMaterial3: true,
     primaryColor: AppColors.primary,

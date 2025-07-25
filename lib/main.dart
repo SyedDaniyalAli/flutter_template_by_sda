@@ -47,8 +47,8 @@ class MyApp extends StatelessWidget {
             ],
           ),
       themeAnimationCurve: Curves.fastEaseInToSlowEaseOut,
-      theme: AppTheme().kLightTheme,
-      darkTheme: AppTheme().kDarkTheme,
+      theme: AppTheme.kLightTheme,
+      darkTheme: AppTheme.kDarkTheme,
     );
   }
 }
