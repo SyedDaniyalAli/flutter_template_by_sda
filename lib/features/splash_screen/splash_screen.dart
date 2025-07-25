@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../core/app_navigation/go_router.dart';
 import '../../core/app_navigation/route_names.dart';
 import '../../core/localizations/l10n/app_localizations.dart';
-import '../../shared/constants/constant.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,7 +23,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.iconBGColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/constant.dart';
+import '../constants/app_colors.dart';
 
 class TextWithHoverEffect extends StatefulWidget {
   final String text;
