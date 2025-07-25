@@ -4,7 +4,8 @@ import 'package:path_provider/path_provider.dart';
 
 class HiveUtil {
   static HiveUtil? _instance;
-  static HiveInterface? _hive;
+  static Box? _defaultBox;
+  static IsolatedBox? _defaultIsolatedBox;
 
   HiveUtil._internal();
 
@@ -37,12 +38,16 @@ class HiveUtil {
 
   /// Open a regular Hive box
   Future<Box<T>> openBox<T>(String boxName) async {
-    return await Hive.openBox<T>(boxName);
+    final box = await Hive.openBox<T>(boxName);
+    _defaultBox = box; // Set as default box
+    return box;
   }
 
   /// Open an IsolatedHive box for multi-isolate support
   Future<IsolatedBox<T>> openIsolatedBox<T>(String boxName) async {
-    return await IsolatedHive.openBox<T>(boxName);
+    final box = await IsolatedHive.openBox<T>(boxName);
+    _defaultIsolatedBox = box; // Set as default isolated box
+    return box;
   }
 
   /// Close a box
@@ -67,73 +72,185 @@ class HiveUtil {
   }
 
   /// Add an object to the box
-  Future<int> add<T>(Box<T> box, T value) async {
-    return await box.add(value);
+  Future<int> add<T>(T value, [Box<T>? box]) async {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    return await targetBox.add(value);
   }
 
   /// Put an object with a key
-  Future<void> put<T>(Box<T> box, dynamic key, T value) async {
-    await box.put(key, value);
+  Future<void> put<T>(dynamic key, T value, [Box<T>? box]) async {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    await targetBox.put(key, value);
   }
 
   /// Get an object by key
-  Future<T?> get<T>(Box<T> box, dynamic key) async {
-    return box.get(key);
+  Future<T?> get<T>(dynamic key, [Box<T>? box]) async {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    return targetBox.get(key);
   }
 
   /// Get all objects
-  List<T> getAll<T>(Box<T> box) {
-    return box.values.toList();
+  List<T> getAll<T>([Box<T>? box]) {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    return targetBox.values.toList();
   }
 
   /// Get object at index
-  T? getAt<T>(Box<T> box, int index) {
-    return box.getAt(index);
+  T? getAt<T>(int index, [Box<T>? box]) {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    return targetBox.getAt(index);
   }
 
   /// Put object at index
-  Future<void> putAt<T>(Box<T> box, int index, T value) async {
-    await box.putAt(index, value);
+  Future<void> putAt<T>(int index, T value, [Box<T>? box]) async {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    await targetBox.putAt(index, value);
   }
 
   /// Delete an object by key
-  Future<void> delete<T>(Box<T> box, dynamic key) async {
-    await box.delete(key);
+  Future<void> delete<T>(dynamic key, [Box<T>? box]) async {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    await targetBox.delete(key);
   }
 
   /// Delete object at index
-  Future<void> deleteAt<T>(Box<T> box, int index) async {
-    await box.deleteAt(index);
+  Future<void> deleteAt<T>(int index, [Box<T>? box]) async {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    await targetBox.deleteAt(index);
   }
 
   /// Delete all objects in the box
-  Future<void> clear<T>(Box<T> box) async {
-    await box.clear();
+  Future<void> clear<T>([Box<T>? box]) async {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    await targetBox.clear();
   }
 
   /// Get all keys from box
-  Iterable<dynamic> getKeys<T>(Box<T> box) {
-    return box.keys;
+  Iterable<dynamic> getKeys<T>([Box<T>? box]) {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    return targetBox.keys;
   }
 
   /// Get box length
-  int getLength<T>(Box<T> box) {
-    return box.length;
+  int getLength<T>([Box<T>? box]) {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    return targetBox.length;
   }
 
   /// Check if box is empty
-  bool isEmpty<T>(Box<T> box) {
-    return box.isEmpty;
+  bool isEmpty<T>([Box<T>? box]) {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    return targetBox.isEmpty;
   }
 
   /// Check if box is not empty
-  bool isNotEmpty<T>(Box<T> box) {
-    return box.isNotEmpty;
+  bool isNotEmpty<T>([Box<T>? box]) {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    return targetBox.isNotEmpty;
   }
 
   /// Check if key exists in box
-  bool containsKey<T>(Box<T> box, dynamic key) {
-    return box.containsKey(key);
+  bool containsKey<T>(dynamic key, [Box<T>? box]) {
+    final targetBox = box ?? _defaultBox as Box<T>;
+    return targetBox.containsKey(key);
+  }
+
+  // ========== ISOLATED BOX OPERATIONS ==========
+
+  /// Add an object to the isolated box
+  Future<int> addIsolated<T>(T value, [IsolatedBox<T>? box]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    return await targetBox.add(value);
+  }
+
+  /// Put an object with a key in isolated box
+  Future<void> putIsolated<T>(
+    dynamic key,
+    T value, [
+    IsolatedBox<T>? box,
+  ]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    await targetBox.put(key, value);
+  }
+
+  /// Get an object by key from isolated box
+  Future<T?> getIsolated<T>(dynamic key, [IsolatedBox<T>? box]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    return await targetBox.get(key);
+  }
+
+  /// Get all objects from isolated box
+  Future<List<T>> getAllIsolated<T>([IsolatedBox<T>? box]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    final values = await targetBox.values;
+    return values.toList();
+  }
+
+  /// Get object at index from isolated box
+  Future<T?> getAtIsolated<T>(int index, [IsolatedBox<T>? box]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    return await targetBox.getAt(index);
+  }
+
+  /// Put object at index in isolated box
+  Future<void> putAtIsolated<T>(
+    int index,
+    T value, [
+    IsolatedBox<T>? box,
+  ]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    await targetBox.putAt(index, value);
+  }
+
+  /// Delete an object by key from isolated box
+  Future<void> deleteIsolated<T>(dynamic key, [IsolatedBox<T>? box]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    await targetBox.delete(key);
+  }
+
+  /// Delete object at index from isolated box
+  Future<void> deleteAtIsolated<T>(int index, [IsolatedBox<T>? box]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    await targetBox.deleteAt(index);
+  }
+
+  /// Delete all objects in the isolated box
+  Future<void> clearIsolated<T>([IsolatedBox<T>? box]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    await targetBox.clear();
+  }
+
+  /// Get all keys from isolated box
+  Future<Iterable<dynamic>> getKeysIsolated<T>([IsolatedBox<T>? box]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    return await targetBox.keys;
+  }
+
+  /// Get isolated box length
+  Future<int> getLengthIsolated<T>([IsolatedBox<T>? box]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    return await targetBox.length;
+  }
+
+  /// Check if isolated box is empty
+  Future<bool> isEmptyIsolated<T>([IsolatedBox<T>? box]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    return await targetBox.isEmpty;
+  }
+
+  /// Check if isolated box is not empty
+  Future<bool> isNotEmptyIsolated<T>([IsolatedBox<T>? box]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    return !(await targetBox.isEmpty);
+  }
+
+  /// Check if key exists in isolated box
+  Future<bool> containsKeyIsolated<T>(
+    dynamic key, [
+    IsolatedBox<T>? box,
+  ]) async {
+    final targetBox = box ?? _defaultIsolatedBox as IsolatedBox<T>;
+    return await targetBox.containsKey(key);
   }
 
   /// Open a BoxCollection
