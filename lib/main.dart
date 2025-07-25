@@ -16,6 +16,8 @@ void main() async {
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   setPathUrlStrategy();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // Hive.registerAdapters();
+  // await Hive.openBox<Product>(productBox);
 
   ApiRoutes.kBaseUrl = Env.baseUrl;
   // Bloc.observer = CustomBlocObserver();
