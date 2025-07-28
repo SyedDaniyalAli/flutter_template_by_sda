@@ -71,5 +71,15 @@ class AppColors {
   static const Color startHereCardFGColor = Color(0xfff0f9ff);
   static const Color iconBGColor = Color(0xfffbe4cc);
 
+  ///Messages Color
+  static const Color errorMessageColor = Color.fromARGB(
+    255,
+    166,
+    4,
+    4,
+  ); // Color(0xffeb5479)
+  static const Color successMessageColor = Color(0xFFDD242D);
+  static const Color warningMessageColor = Color(0xFFC2AF6F);
+
   //==============================================================================
 }
