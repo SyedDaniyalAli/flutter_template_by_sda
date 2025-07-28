@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template_by_sda/shared/constants/app_fonts.dart';
+import 'package:flutter_template_by_sda/shared/theme/theme_constant.dart';
 
 import '../constants/app_colors.dart';
 
@@ -17,127 +18,21 @@ class AppTheme {
 
   // Shared TextTheme for light and dark, with color as parameter
   static TextTheme _textTheme(Color color) => TextTheme(
-    displayLarge: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 40,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    displayMedium: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 36,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    displaySmall: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 32,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    headlineLarge: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 28,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    headlineMedium: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 24,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    headlineSmall: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 20,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    titleLarge: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 18,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    titleMedium: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 16,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    titleSmall: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 14,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    labelLarge: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 16,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    labelMedium: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 14,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    labelSmall: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 12,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-      height: color == Colors.white ? 2 : null,
-    ),
-    bodyLarge: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 16,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    bodyMedium: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: 14,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
-    bodySmall: TextStyle(
-      fontFamily: fontFamily,
-      fontSize: color == Colors.white ? 10 : 12,
-      fontStyle: FontStyle.normal,
-      textBaseline: TextBaseline.alphabetic,
-      leadingDistribution: TextLeadingDistribution.proportional,
-      color: color,
-    ),
+    displayLarge: AppTextStyles.displayLarge(color),
+    displayMedium: AppTextStyles.displayMedium(color),
+    displaySmall: AppTextStyles.displaySmall(color),
+    headlineLarge: AppTextStyles.headlineLarge(color),
+    headlineMedium: AppTextStyles.headlineMedium(color),
+    headlineSmall: AppTextStyles.headlineSmall(color),
+    titleLarge: AppTextStyles.titleLarge(color),
+    titleMedium: AppTextStyles.titleMedium(color),
+    titleSmall: AppTextStyles.titleSmall(color),
+    labelLarge: AppTextStyles.labelLarge(color),
+    labelMedium: AppTextStyles.labelMedium(color),
+    labelSmall: AppTextStyles.labelSmall(color),
+    bodyLarge: AppTextStyles.bodyLarge(color),
+    bodyMedium: AppTextStyles.bodyMedium(color),
+    bodySmall: AppTextStyles.bodySmall(color),
   );
 
   // Shared PopupMenuThemeData
@@ -165,6 +60,7 @@ class AppTheme {
     ),
   );
 
+  // light theme~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   static ThemeData kLightTheme = ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: AppColors.bodyColor,
@@ -208,6 +104,7 @@ class AppTheme {
     ),
   );
 
+  // dark theme~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   static ThemeData kDarkTheme = ThemeData(
     fontFamily: fontFamily,
     useMaterial3: true,

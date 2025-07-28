@@ -9,4 +9,5 @@ extension ContextExtensions on BuildContext {
 
   double get screenHeight => MediaQuery.of(this).size.height;
 
+  ColorScheme get color => Theme.of(this).colorScheme;
 }
