@@ -5,10 +5,6 @@ import 'package:flutter_template_by_sda/shared/theme/theme_constant.dart';
 import '../constants/app_colors.dart';
 
 class AppTheme {
-  static final AppTheme _instance = AppTheme._internal();
-  factory AppTheme() => _instance;
-  AppTheme._internal();
-
   static const String fontFamily = AppFonts.appFontFamily;
 
   // Shared ButtonStyle

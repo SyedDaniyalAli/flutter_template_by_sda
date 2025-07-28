@@ -3,32 +3,22 @@ import 'dart:ui';
 import 'package:flutter/material.dart' show Colors;
 
 class AppColors {
-  static final AppColors _instance = AppColors._internal();
-  factory AppColors() {
-    return _instance;
-  }
-  AppColors._internal();
+  // Dictionary App Colors
+  static const Color primaryColor = Color(0xFFFCF6E1);
+  static const Color lightBlack = Color(0xFF707070);
+  static const Color darkBlack = Color.fromRGBO(47, 46, 46, 1);
+  static const Color itemListColor = Color(0xFFE7E1CC);
+  static const Color itemListColor2 = Color(0xFFE7E1CC);
+  static const Color itemSeparator = Color(0xFF444343);
 
-  //Dictionary App Colors
-  static Color primaryColor = const Color(0xFFFCF6E1);
-  static Color lightBlack = const Color(0xFF707070);
-  // static Color darkBlack = Color(0xFF2F2E2E);
-
-  static Color darkBlack = const Color.fromRGBO(47, 46, 46, 1);
-
-  static Color itemListColor = const Color(0xFFE7E1CC);
-  static Color itemListColor2 = const Color(0xFFE7E1CC);
-  static Color itemSeparator = const Color(0xFF444343);
-
-  // TextColors
-  static Color colorTextBlue = const Color.fromARGB(255, 43, 89, 110);
-  static Color colorGrey = const Color.fromRGBO(245, 245, 245, 100);
-  static Color colorTextBlack = Colors.black;
-  static Color colorTextWhite = Colors.white;
+  // Text Colors
+  static const Color colorTextBlue = Color.fromARGB(255, 43, 89, 110);
+  static const Color colorGrey = Color.fromRGBO(245, 245, 245, 100);
+  static const Color colorTextBlack = Colors.black;
+  static const Color colorTextWhite = Colors.white;
 
   // Button Background Colors
-  // static Color color_primary = Color.fromARGB(255, 59, 126, 158);
-  static Color colorPrimaryBG = const Color(0xFFD4CEBB);
+  static const Color colorPrimaryBG = Color(0xFFD4CEBB);
 
   //==================== Main Colors ===========================================
   static const Color appWhiteColor = Color(0xffFFFFFF);

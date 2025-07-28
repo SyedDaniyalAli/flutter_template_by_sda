@@ -1,75 +1,65 @@
 import 'package:flutter/material.dart';
 
 class AppSnackBar {
-  void showErrorSnackBar(
-      {required BuildContext context, required String error}) {
+  static void showErrorSnackBar({
+    required BuildContext context,
+    required String error,
+  }) {
     ScaffoldMessenger.of(context).clearSnackBars();
-
     var snackBar = SnackBar(
-      content: Text(
-        error,
-        style: const TextStyle(color: Colors.white),
-      ),
+      content: Text(error, style: const TextStyle(color: Colors.white)),
       backgroundColor: Colors.red.shade900,
       showCloseIcon: true,
       closeIconColor: Colors.white,
     );
-
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  void showWarningSnackBar(
-      {required BuildContext context, required String error}) {
+  static void showWarningSnackBar({
+    required BuildContext context,
+    required String error,
+  }) {
     ScaffoldMessenger.of(context).clearSnackBars();
-
     var snackBar = SnackBar(
-      content: Text(
-        error,
-        style: const TextStyle(color: Colors.white),
-      ),
+      content: Text(error, style: const TextStyle(color: Colors.white)),
       backgroundColor: const Color(0xFFfec103),
       showCloseIcon: true,
       closeIconColor: Colors.black,
     );
-
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  void showSuccessSnackBar(
-      {required BuildContext context, required String successMsg}) {
+  static void showSuccessSnackBar({
+    required BuildContext context,
+    required String successMsg,
+  }) {
     ScaffoldMessenger.of(context).clearSnackBars();
-
     var snackBar = SnackBar(
-      content: Text(
-        successMsg,
-        style: const TextStyle(color: Colors.white),
-      ),
+      content: Text(successMsg, style: const TextStyle(color: Colors.white)),
       backgroundColor: Colors.green.shade900,
       showCloseIcon: true,
       closeIconColor: Colors.white,
     );
-
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  void showSuccessDialog({
+  static void showSuccessDialog({
     required BuildContext context,
     required String successMsg,
     required VoidCallback actionButtonPressed,
   }) {
     showDialog(
       context: context,
-      builder: (ctx) => AlertDialog(
-        content: Text(
-          successMsg,
-        ),
-        actions: [
-          TextButton(
-            onPressed: actionButtonPressed,
-            child: const Text("Ok"),
+      builder:
+          (ctx) => AlertDialog(
+            content: Text(successMsg),
+            actions: [
+              TextButton(
+                onPressed: actionButtonPressed,
+                child: const Text("Ok"),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 }
