@@ -4,9 +4,14 @@ import 'package:intl/intl.dart';
 import '../../constants/app_utils.dart';
 
 extension CustomStringExtensions on String {
-  String? capitalize() {
+  String toCapitalize() {
     return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
+
+  String toTitleCase() => replaceAll(
+    RegExp(' +'),
+    ' ',
+  ).split(' ').map((str) => str.toCapitalize()).join(' ');
 
   String formattedDate(BuildContext context) {
     return this == ""
