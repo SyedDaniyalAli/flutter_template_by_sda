@@ -1,10 +1,22 @@
 flutter_native_splash:
-  color: "#fbe4cc"
-#  image: assets/images/ic_logo.png
+  image: assets/icon/splash_img.png
+  color: "#FFFFFF"
+  color_dark: "#000000"
+  # background_image: assets/icon/splash_img.png
+  image_dark: assets/icon/splash_img.png
+  fullscreen: true
+  android_gravity: fill
+  ios_content_mode: fill
   android_12:
-    image: assets/images/ic_logo.png
-  android: false # Enable for Android
-  ios: false # Enable for iOS
-  web: true # Enable for Web
-  android_gravity: center
-  ios_content_mode: center
+    image: assets/icon/icon.png
+    # background_image: assets/icon/splash_img.png
+    color: "#FFFFFF"
+    color_dark: "#000000"
+    image_dark: assets/icon/icon.png
+    fullscreen: true
+    android_gravity: fill
+    ios_content_mode: fill
+
+  android: true
+  ios: true
+  web: false

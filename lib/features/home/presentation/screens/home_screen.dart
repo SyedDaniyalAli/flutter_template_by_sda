@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_template_by_sda/shared/utils/extensions/responsive_extension.dart';
 
+import '/shared/utils/extensions/responsive_extension.dart';
 import '../../../../core/app_navigation/go_router.dart';
 import '../../logic/providers/home_provider.dart';
 

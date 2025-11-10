@@ -2,11 +2,11 @@ import 'package:dynamic_path_url_strategy/dynamic_path_url_strategy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_template_by_sda/shared/constants/constant.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'core/app_navigation/go_router.dart';
 import 'shared/constants/api_routes.dart';
+import 'shared/constants/constant.dart';
 import 'shared/constants/env.dart';
 import 'shared/dependency_injection/di_container.dart';
 import 'shared/theme/app_theme.dart';

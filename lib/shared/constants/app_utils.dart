@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_template_by_sda/shared/utils/extensions/context_extensions.dart';
 
+import '/shared/utils/extensions/context_extensions.dart';
 import '../../core/responsive/responsive.dart';
 
 enum BuildFlavor { staging, production }

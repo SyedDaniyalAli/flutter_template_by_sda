@@ -4,9 +4,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_template_by_sda/shared/utils/helper/snack_bars.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '/shared/utils/helper/snack_bars.dart';
 import 'image_compressor.dart';
 
 class PickImage {

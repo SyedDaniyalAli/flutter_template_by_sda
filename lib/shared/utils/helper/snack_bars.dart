@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template_by_sda/shared/widgets/app_text.dart';
 
+import '/shared/widgets/app_text.dart';
 import '../../constants/app_colors.dart';
 
 enum MessageType {

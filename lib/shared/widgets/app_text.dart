@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template_by_sda/shared/utils/extensions/context_extensions.dart';
-import 'package:flutter_template_by_sda/shared/utils/extensions/string_extensions.dart';
+
+import '/shared/utils/extensions/context_extensions.dart';
+import '/shared/utils/extensions/string_extensions.dart';
 
 class AppText extends StatelessWidget {
   const AppText(

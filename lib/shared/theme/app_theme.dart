@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template_by_sda/shared/constants/app_fonts.dart';
-import 'package:flutter_template_by_sda/shared/theme/theme_constant.dart';
 
+import '/shared/constants/app_fonts.dart';
+import '/shared/theme/theme_constant.dart';
 import '../constants/app_colors.dart';
 
 class AppTheme {
