@@ -15,4 +15,18 @@ class SubBaseResponse with _$SubBaseResponse {
 
   factory SubBaseResponse.fromJson(Map<String, dynamic> json) =>
       _$SubBaseResponseFromJson(json);
+
+  @override
+  // TODO: implement data
+  get data => throw UnimplementedError();
+
+  @override
+  // TODO: implement pagination
+  Pagination? get pagination => throw UnimplementedError();
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson
+    throw UnimplementedError();
+  }
 }

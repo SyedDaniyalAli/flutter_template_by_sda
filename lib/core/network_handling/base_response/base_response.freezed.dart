@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,226 +9,284 @@ part of 'base_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-BaseResponse<T> _$BaseResponseFromJson<T>(Map<String, dynamic> json) {
-  return _BaseResponse<T>.fromJson(json);
-}
 
 /// @nodoc
 mixin _$BaseResponse<T> {
-  bool get success => throw _privateConstructorUsedError;
-  int get status => throw _privateConstructorUsedError;
-  List<String> get message => throw _privateConstructorUsedError;
-  dynamic get data => throw _privateConstructorUsedError;
+
+ bool get success; int get status; List<String> get message; dynamic get data;
+/// Create a copy of BaseResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BaseResponseCopyWith<T, BaseResponse<T>> get copyWith => _$BaseResponseCopyWithImpl<T, BaseResponse<T>>(this as BaseResponse<T>, _$identity);
 
   /// Serializes this BaseResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of BaseResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BaseResponseCopyWith<T, BaseResponse<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BaseResponse<T>&&(identical(other.success, success) || other.success == success)&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.message, message)&&const DeepCollectionEquality().equals(other.data, data));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,success,status,const DeepCollectionEquality().hash(message),const DeepCollectionEquality().hash(data));
+
+@override
+String toString() {
+  return 'BaseResponse<$T>(success: $success, status: $status, message: $message, data: $data)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $BaseResponseCopyWith<T, $Res> {
-  factory $BaseResponseCopyWith(
-          BaseResponse<T> value, $Res Function(BaseResponse<T>) then) =
-      _$BaseResponseCopyWithImpl<T, $Res, BaseResponse<T>>;
-  @useResult
-  $Res call({bool success, int status, List<String> message, dynamic data});
-}
+abstract mixin class $BaseResponseCopyWith<T,$Res>  {
+  factory $BaseResponseCopyWith(BaseResponse<T> value, $Res Function(BaseResponse<T>) _then) = _$BaseResponseCopyWithImpl;
+@useResult
+$Res call({
+ bool success, int status, List<String> message, dynamic data
+});
 
+
+
+
+}
 /// @nodoc
-class _$BaseResponseCopyWithImpl<T, $Res, $Val extends BaseResponse<T>>
+class _$BaseResponseCopyWithImpl<T,$Res>
     implements $BaseResponseCopyWith<T, $Res> {
-  _$BaseResponseCopyWithImpl(this._value, this._then);
+  _$BaseResponseCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final BaseResponse<T> _self;
+  final $Res Function(BaseResponse<T>) _then;
 
-  /// Create a copy of BaseResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? success = null,
-    Object? status = null,
-    Object? message = null,
-    Object? data = freezed,
-  }) {
-    return _then(_value.copyWith(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as int,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
-  }
+/// Create a copy of BaseResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? success = null,Object? status = null,Object? message = null,Object? data = freezed,}) {
+  return _then(_self.copyWith(
+success: null == success ? _self.success : success // ignore: cast_nullable_to_non_nullable
+as bool,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as int,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as List<String>,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as dynamic,
+  ));
 }
 
-/// @nodoc
-abstract class _$$BaseResponseImplCopyWith<T, $Res>
-    implements $BaseResponseCopyWith<T, $Res> {
-  factory _$$BaseResponseImplCopyWith(_$BaseResponseImpl<T> value,
-          $Res Function(_$BaseResponseImpl<T>) then) =
-      __$$BaseResponseImplCopyWithImpl<T, $Res>;
-  @override
-  @useResult
-  $Res call({bool success, int status, List<String> message, dynamic data});
 }
 
-/// @nodoc
-class __$$BaseResponseImplCopyWithImpl<T, $Res>
-    extends _$BaseResponseCopyWithImpl<T, $Res, _$BaseResponseImpl<T>>
-    implements _$$BaseResponseImplCopyWith<T, $Res> {
-  __$$BaseResponseImplCopyWithImpl(
-      _$BaseResponseImpl<T> _value, $Res Function(_$BaseResponseImpl<T>) _then)
-      : super(_value, _then);
 
-  /// Create a copy of BaseResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? success = null,
-    Object? status = null,
-    Object? message = null,
-    Object? data = freezed,
-  }) {
-    return _then(_$BaseResponseImpl<T>(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as int,
-      message: null == message
-          ? _value._message
-          : message // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
+/// Adds pattern-matching-related methods to [BaseResponse].
+extension BaseResponsePatterns<T> on BaseResponse<T> {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _BaseResponse<T> value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _BaseResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _BaseResponse<T> value)  $default,){
+final _that = this;
+switch (_that) {
+case _BaseResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _BaseResponse<T> value)?  $default,){
+final _that = this;
+switch (_that) {
+case _BaseResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool success,  int status,  List<String> message,  dynamic data)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _BaseResponse() when $default != null:
+return $default(_that.success,_that.status,_that.message,_that.data);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool success,  int status,  List<String> message,  dynamic data)  $default,) {final _that = this;
+switch (_that) {
+case _BaseResponse():
+return $default(_that.success,_that.status,_that.message,_that.data);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool success,  int status,  List<String> message,  dynamic data)?  $default,) {final _that = this;
+switch (_that) {
+case _BaseResponse() when $default != null:
+return $default(_that.success,_that.status,_that.message,_that.data);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake, checked: true)
-class _$BaseResponseImpl<T> implements _BaseResponse<T> {
-  const _$BaseResponseImpl(
-      {required this.success,
-      required this.status,
-      required final List<String> message,
-      required this.data})
-      : _message = message;
+class _BaseResponse<T> implements BaseResponse<T> {
+  const _BaseResponse({required this.success, required this.status, required final  List<String> message, required this.data}): _message = message;
+  factory _BaseResponse.fromJson(Map<String, dynamic> json) => _$BaseResponseFromJson(json);
 
-  factory _$BaseResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BaseResponseImplFromJson(json);
-
-  @override
-  final bool success;
-  @override
-  final int status;
-  final List<String> _message;
-  @override
-  List<String> get message {
-    if (_message is EqualUnmodifiableListView) return _message;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_message);
-  }
-
-  @override
-  final dynamic data;
-
-  @override
-  String toString() {
-    return 'BaseResponse<$T>(success: $success, status: $status, message: $message, data: $data)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BaseResponseImpl<T> &&
-            (identical(other.success, success) || other.success == success) &&
-            (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other._message, _message) &&
-            const DeepCollectionEquality().equals(other.data, data));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      success,
-      status,
-      const DeepCollectionEquality().hash(_message),
-      const DeepCollectionEquality().hash(data));
-
-  /// Create a copy of BaseResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BaseResponseImplCopyWith<T, _$BaseResponseImpl<T>> get copyWith =>
-      __$$BaseResponseImplCopyWithImpl<T, _$BaseResponseImpl<T>>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BaseResponseImplToJson<T>(
-      this,
-    );
-  }
+@override final  bool success;
+@override final  int status;
+ final  List<String> _message;
+@override List<String> get message {
+  if (_message is EqualUnmodifiableListView) return _message;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_message);
 }
 
-abstract class _BaseResponse<T> implements BaseResponse<T> {
-  const factory _BaseResponse(
-      {required final bool success,
-      required final int status,
-      required final List<String> message,
-      required final dynamic data}) = _$BaseResponseImpl<T>;
+@override final  dynamic data;
 
-  factory _BaseResponse.fromJson(Map<String, dynamic> json) =
-      _$BaseResponseImpl<T>.fromJson;
+/// Create a copy of BaseResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$BaseResponseCopyWith<T, _BaseResponse<T>> get copyWith => __$BaseResponseCopyWithImpl<T, _BaseResponse<T>>(this, _$identity);
 
-  @override
-  bool get success;
-  @override
-  int get status;
-  @override
-  List<String> get message;
-  @override
-  dynamic get data;
-
-  /// Create a copy of BaseResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BaseResponseImplCopyWith<T, _$BaseResponseImpl<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$BaseResponseToJson<T>(this, );
 }
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BaseResponse<T>&&(identical(other.success, success) || other.success == success)&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._message, _message)&&const DeepCollectionEquality().equals(other.data, data));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,success,status,const DeepCollectionEquality().hash(_message),const DeepCollectionEquality().hash(data));
+
+@override
+String toString() {
+  return 'BaseResponse<$T>(success: $success, status: $status, message: $message, data: $data)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$BaseResponseCopyWith<T,$Res> implements $BaseResponseCopyWith<T, $Res> {
+  factory _$BaseResponseCopyWith(_BaseResponse<T> value, $Res Function(_BaseResponse<T>) _then) = __$BaseResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ bool success, int status, List<String> message, dynamic data
+});
+
+
+
+
+}
+/// @nodoc
+class __$BaseResponseCopyWithImpl<T,$Res>
+    implements _$BaseResponseCopyWith<T, $Res> {
+  __$BaseResponseCopyWithImpl(this._self, this._then);
+
+  final _BaseResponse<T> _self;
+  final $Res Function(_BaseResponse<T>) _then;
+
+/// Create a copy of BaseResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? success = null,Object? status = null,Object? message = null,Object? data = freezed,}) {
+  return _then(_BaseResponse<T>(
+success: null == success ? _self.success : success // ignore: cast_nullable_to_non_nullable
+as bool,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as int,message: null == message ? _self._message : message // ignore: cast_nullable_to_non_nullable
+as List<String>,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as dynamic,
+  ));
+}
+
+
+}
+
+// dart format on

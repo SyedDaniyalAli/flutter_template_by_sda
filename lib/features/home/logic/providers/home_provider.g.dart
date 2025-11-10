@@ -6,20 +6,58 @@ part of 'home_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeNotifierHash() => r'8e0dc2b7e335d9817225c5d19bbf4b0ca0fec1ce';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [HomeNotifier].
 @ProviderFor(HomeNotifier)
-final homeNotifierProvider =
-    AutoDisposeNotifierProvider<HomeNotifier, HomeState>.internal(
-  HomeNotifier.new,
-  name: r'homeNotifierProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$homeNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const homeProvider = HomeNotifierProvider._();
 
-typedef _$HomeNotifier = AutoDisposeNotifier<HomeState>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class HomeNotifierProvider
+    extends $NotifierProvider<HomeNotifier, HomeState> {
+  const HomeNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'homeProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$homeNotifierHash();
+
+  @$internal
+  @override
+  HomeNotifier create() => HomeNotifier();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(HomeState value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<HomeState>(value),
+    );
+  }
+}
+
+String _$homeNotifierHash() => r'5987a780b98cb12cccd9ee9625defa02a52fbed8';
+
+abstract class _$HomeNotifier extends $Notifier<HomeState> {
+  HomeState build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<HomeState, HomeState>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<HomeState, HomeState>,
+              HomeState,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,326 +9,293 @@ part of 'pagination.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Pagination _$PaginationFromJson(Map<String, dynamic> json) {
-  return _Pagination.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Pagination {
-  int? get total => throw _privateConstructorUsedError;
-  @JsonKey(name: 'per_page')
-  int? get perPage => throw _privateConstructorUsedError;
-  int? get current => throw _privateConstructorUsedError;
-  int? get first => throw _privateConstructorUsedError;
-  int? get last => throw _privateConstructorUsedError;
-  int? get previous => throw _privateConstructorUsedError;
-  int? get next => throw _privateConstructorUsedError;
-  int? get from => throw _privateConstructorUsedError;
-  int? get to => throw _privateConstructorUsedError;
+
+ int? get total;@JsonKey(name: 'per_page') int? get perPage; int? get current; int? get first; int? get last; int? get previous; int? get next; int? get from; int? get to;
+/// Create a copy of Pagination
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PaginationCopyWith<Pagination> get copyWith => _$PaginationCopyWithImpl<Pagination>(this as Pagination, _$identity);
 
   /// Serializes this Pagination to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Pagination
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PaginationCopyWith<Pagination> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Pagination&&(identical(other.total, total) || other.total == total)&&(identical(other.perPage, perPage) || other.perPage == perPage)&&(identical(other.current, current) || other.current == current)&&(identical(other.first, first) || other.first == first)&&(identical(other.last, last) || other.last == last)&&(identical(other.previous, previous) || other.previous == previous)&&(identical(other.next, next) || other.next == next)&&(identical(other.from, from) || other.from == from)&&(identical(other.to, to) || other.to == to));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,total,perPage,current,first,last,previous,next,from,to);
+
+@override
+String toString() {
+  return 'Pagination(total: $total, perPage: $perPage, current: $current, first: $first, last: $last, previous: $previous, next: $next, from: $from, to: $to)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PaginationCopyWith<$Res> {
-  factory $PaginationCopyWith(
-          Pagination value, $Res Function(Pagination) then) =
-      _$PaginationCopyWithImpl<$Res, Pagination>;
-  @useResult
-  $Res call(
-      {int? total,
-      @JsonKey(name: 'per_page') int? perPage,
-      int? current,
-      int? first,
-      int? last,
-      int? previous,
-      int? next,
-      int? from,
-      int? to});
-}
+abstract mixin class $PaginationCopyWith<$Res>  {
+  factory $PaginationCopyWith(Pagination value, $Res Function(Pagination) _then) = _$PaginationCopyWithImpl;
+@useResult
+$Res call({
+ int? total,@JsonKey(name: 'per_page') int? perPage, int? current, int? first, int? last, int? previous, int? next, int? from, int? to
+});
 
+
+
+
+}
 /// @nodoc
-class _$PaginationCopyWithImpl<$Res, $Val extends Pagination>
+class _$PaginationCopyWithImpl<$Res>
     implements $PaginationCopyWith<$Res> {
-  _$PaginationCopyWithImpl(this._value, this._then);
+  _$PaginationCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Pagination _self;
+  final $Res Function(Pagination) _then;
 
-  /// Create a copy of Pagination
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? total = freezed,
-    Object? perPage = freezed,
-    Object? current = freezed,
-    Object? first = freezed,
-    Object? last = freezed,
-    Object? previous = freezed,
-    Object? next = freezed,
-    Object? from = freezed,
-    Object? to = freezed,
-  }) {
-    return _then(_value.copyWith(
-      total: freezed == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int?,
-      perPage: freezed == perPage
-          ? _value.perPage
-          : perPage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      current: freezed == current
-          ? _value.current
-          : current // ignore: cast_nullable_to_non_nullable
-              as int?,
-      first: freezed == first
-          ? _value.first
-          : first // ignore: cast_nullable_to_non_nullable
-              as int?,
-      last: freezed == last
-          ? _value.last
-          : last // ignore: cast_nullable_to_non_nullable
-              as int?,
-      previous: freezed == previous
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as int?,
-      next: freezed == next
-          ? _value.next
-          : next // ignore: cast_nullable_to_non_nullable
-              as int?,
-      from: freezed == from
-          ? _value.from
-          : from // ignore: cast_nullable_to_non_nullable
-              as int?,
-      to: freezed == to
-          ? _value.to
-          : to // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
+/// Create a copy of Pagination
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? total = freezed,Object? perPage = freezed,Object? current = freezed,Object? first = freezed,Object? last = freezed,Object? previous = freezed,Object? next = freezed,Object? from = freezed,Object? to = freezed,}) {
+  return _then(_self.copyWith(
+total: freezed == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
+as int?,perPage: freezed == perPage ? _self.perPage : perPage // ignore: cast_nullable_to_non_nullable
+as int?,current: freezed == current ? _self.current : current // ignore: cast_nullable_to_non_nullable
+as int?,first: freezed == first ? _self.first : first // ignore: cast_nullable_to_non_nullable
+as int?,last: freezed == last ? _self.last : last // ignore: cast_nullable_to_non_nullable
+as int?,previous: freezed == previous ? _self.previous : previous // ignore: cast_nullable_to_non_nullable
+as int?,next: freezed == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
+as int?,from: freezed == from ? _self.from : from // ignore: cast_nullable_to_non_nullable
+as int?,to: freezed == to ? _self.to : to // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$PaginationImplCopyWith<$Res>
-    implements $PaginationCopyWith<$Res> {
-  factory _$$PaginationImplCopyWith(
-          _$PaginationImpl value, $Res Function(_$PaginationImpl) then) =
-      __$$PaginationImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int? total,
-      @JsonKey(name: 'per_page') int? perPage,
-      int? current,
-      int? first,
-      int? last,
-      int? previous,
-      int? next,
-      int? from,
-      int? to});
 }
 
-/// @nodoc
-class __$$PaginationImplCopyWithImpl<$Res>
-    extends _$PaginationCopyWithImpl<$Res, _$PaginationImpl>
-    implements _$$PaginationImplCopyWith<$Res> {
-  __$$PaginationImplCopyWithImpl(
-      _$PaginationImpl _value, $Res Function(_$PaginationImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of Pagination
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? total = freezed,
-    Object? perPage = freezed,
-    Object? current = freezed,
-    Object? first = freezed,
-    Object? last = freezed,
-    Object? previous = freezed,
-    Object? next = freezed,
-    Object? from = freezed,
-    Object? to = freezed,
-  }) {
-    return _then(_$PaginationImpl(
-      total: freezed == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int?,
-      perPage: freezed == perPage
-          ? _value.perPage
-          : perPage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      current: freezed == current
-          ? _value.current
-          : current // ignore: cast_nullable_to_non_nullable
-              as int?,
-      first: freezed == first
-          ? _value.first
-          : first // ignore: cast_nullable_to_non_nullable
-              as int?,
-      last: freezed == last
-          ? _value.last
-          : last // ignore: cast_nullable_to_non_nullable
-              as int?,
-      previous: freezed == previous
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as int?,
-      next: freezed == next
-          ? _value.next
-          : next // ignore: cast_nullable_to_non_nullable
-              as int?,
-      from: freezed == from
-          ? _value.from
-          : from // ignore: cast_nullable_to_non_nullable
-              as int?,
-      to: freezed == to
-          ? _value.to
-          : to // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Pagination].
+extension PaginationPatterns on Pagination {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Pagination value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Pagination() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Pagination value)  $default,){
+final _that = this;
+switch (_that) {
+case _Pagination():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Pagination value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Pagination() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? total, @JsonKey(name: 'per_page')  int? perPage,  int? current,  int? first,  int? last,  int? previous,  int? next,  int? from,  int? to)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Pagination() when $default != null:
+return $default(_that.total,_that.perPage,_that.current,_that.first,_that.last,_that.previous,_that.next,_that.from,_that.to);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? total, @JsonKey(name: 'per_page')  int? perPage,  int? current,  int? first,  int? last,  int? previous,  int? next,  int? from,  int? to)  $default,) {final _that = this;
+switch (_that) {
+case _Pagination():
+return $default(_that.total,_that.perPage,_that.current,_that.first,_that.last,_that.previous,_that.next,_that.from,_that.to);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? total, @JsonKey(name: 'per_page')  int? perPage,  int? current,  int? first,  int? last,  int? previous,  int? next,  int? from,  int? to)?  $default,) {final _that = this;
+switch (_that) {
+case _Pagination() when $default != null:
+return $default(_that.total,_that.perPage,_that.current,_that.first,_that.last,_that.previous,_that.next,_that.from,_that.to);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake, checked: true)
-class _$PaginationImpl implements _Pagination {
-  const _$PaginationImpl(
-      {this.total,
-      @JsonKey(name: 'per_page') this.perPage,
-      this.current,
-      this.first,
-      this.last,
-      this.previous,
-      this.next,
-      this.from,
-      this.to});
+class _Pagination implements Pagination {
+  const _Pagination({this.total, @JsonKey(name: 'per_page') this.perPage, this.current, this.first, this.last, this.previous, this.next, this.from, this.to});
+  factory _Pagination.fromJson(Map<String, dynamic> json) => _$PaginationFromJson(json);
 
-  factory _$PaginationImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PaginationImplFromJson(json);
+@override final  int? total;
+@override@JsonKey(name: 'per_page') final  int? perPage;
+@override final  int? current;
+@override final  int? first;
+@override final  int? last;
+@override final  int? previous;
+@override final  int? next;
+@override final  int? from;
+@override final  int? to;
 
-  @override
-  final int? total;
-  @override
-  @JsonKey(name: 'per_page')
-  final int? perPage;
-  @override
-  final int? current;
-  @override
-  final int? first;
-  @override
-  final int? last;
-  @override
-  final int? previous;
-  @override
-  final int? next;
-  @override
-  final int? from;
-  @override
-  final int? to;
+/// Create a copy of Pagination
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PaginationCopyWith<_Pagination> get copyWith => __$PaginationCopyWithImpl<_Pagination>(this, _$identity);
 
-  @override
-  String toString() {
-    return 'Pagination(total: $total, perPage: $perPage, current: $current, first: $first, last: $last, previous: $previous, next: $next, from: $from, to: $to)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PaginationImpl &&
-            (identical(other.total, total) || other.total == total) &&
-            (identical(other.perPage, perPage) || other.perPage == perPage) &&
-            (identical(other.current, current) || other.current == current) &&
-            (identical(other.first, first) || other.first == first) &&
-            (identical(other.last, last) || other.last == last) &&
-            (identical(other.previous, previous) ||
-                other.previous == previous) &&
-            (identical(other.next, next) || other.next == next) &&
-            (identical(other.from, from) || other.from == from) &&
-            (identical(other.to, to) || other.to == to));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, total, perPage, current, first,
-      last, previous, next, from, to);
-
-  /// Create a copy of Pagination
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaginationImplCopyWith<_$PaginationImpl> get copyWith =>
-      __$$PaginationImplCopyWithImpl<_$PaginationImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PaginationImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PaginationToJson(this, );
 }
 
-abstract class _Pagination implements Pagination {
-  const factory _Pagination(
-      {final int? total,
-      @JsonKey(name: 'per_page') final int? perPage,
-      final int? current,
-      final int? first,
-      final int? last,
-      final int? previous,
-      final int? next,
-      final int? from,
-      final int? to}) = _$PaginationImpl;
-
-  factory _Pagination.fromJson(Map<String, dynamic> json) =
-      _$PaginationImpl.fromJson;
-
-  @override
-  int? get total;
-  @override
-  @JsonKey(name: 'per_page')
-  int? get perPage;
-  @override
-  int? get current;
-  @override
-  int? get first;
-  @override
-  int? get last;
-  @override
-  int? get previous;
-  @override
-  int? get next;
-  @override
-  int? get from;
-  @override
-  int? get to;
-
-  /// Create a copy of Pagination
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PaginationImplCopyWith<_$PaginationImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Pagination&&(identical(other.total, total) || other.total == total)&&(identical(other.perPage, perPage) || other.perPage == perPage)&&(identical(other.current, current) || other.current == current)&&(identical(other.first, first) || other.first == first)&&(identical(other.last, last) || other.last == last)&&(identical(other.previous, previous) || other.previous == previous)&&(identical(other.next, next) || other.next == next)&&(identical(other.from, from) || other.from == from)&&(identical(other.to, to) || other.to == to));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,total,perPage,current,first,last,previous,next,from,to);
+
+@override
+String toString() {
+  return 'Pagination(total: $total, perPage: $perPage, current: $current, first: $first, last: $last, previous: $previous, next: $next, from: $from, to: $to)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PaginationCopyWith<$Res> implements $PaginationCopyWith<$Res> {
+  factory _$PaginationCopyWith(_Pagination value, $Res Function(_Pagination) _then) = __$PaginationCopyWithImpl;
+@override @useResult
+$Res call({
+ int? total,@JsonKey(name: 'per_page') int? perPage, int? current, int? first, int? last, int? previous, int? next, int? from, int? to
+});
+
+
+
+
+}
+/// @nodoc
+class __$PaginationCopyWithImpl<$Res>
+    implements _$PaginationCopyWith<$Res> {
+  __$PaginationCopyWithImpl(this._self, this._then);
+
+  final _Pagination _self;
+  final $Res Function(_Pagination) _then;
+
+/// Create a copy of Pagination
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? total = freezed,Object? perPage = freezed,Object? current = freezed,Object? first = freezed,Object? last = freezed,Object? previous = freezed,Object? next = freezed,Object? from = freezed,Object? to = freezed,}) {
+  return _then(_Pagination(
+total: freezed == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
+as int?,perPage: freezed == perPage ? _self.perPage : perPage // ignore: cast_nullable_to_non_nullable
+as int?,current: freezed == current ? _self.current : current // ignore: cast_nullable_to_non_nullable
+as int?,first: freezed == first ? _self.first : first // ignore: cast_nullable_to_non_nullable
+as int?,last: freezed == last ? _self.last : last // ignore: cast_nullable_to_non_nullable
+as int?,previous: freezed == previous ? _self.previous : previous // ignore: cast_nullable_to_non_nullable
+as int?,next: freezed == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
+as int?,from: freezed == from ? _self.from : from // ignore: cast_nullable_to_non_nullable
+as int?,to: freezed == to ? _self.to : to // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
+
+// dart format on

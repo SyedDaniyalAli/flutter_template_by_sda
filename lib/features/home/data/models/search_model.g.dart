@@ -6,15 +6,14 @@ part of 'search_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SearchModelImpl _$$SearchModelImplFromJson(Map<String, dynamic> json) =>
-    _$SearchModelImpl(
-      id: (json['id'] as num).toInt(),
-      title: json['title'] as String,
-      type: json['type'] as String,
-      definition: json['definition'] as String?,
-    );
+_SearchModel _$SearchModelFromJson(Map<String, dynamic> json) => _SearchModel(
+  id: (json['id'] as num).toInt(),
+  title: json['title'] as String,
+  type: json['type'] as String,
+  definition: json['definition'] as String?,
+);
 
-Map<String, dynamic> _$$SearchModelImplToJson(_$SearchModelImpl instance) =>
+Map<String, dynamic> _$SearchModelToJson(_SearchModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

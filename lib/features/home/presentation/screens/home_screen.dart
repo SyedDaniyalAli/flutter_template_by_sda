@@ -13,8 +13,8 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notifier = ref.read(homeNotifierProvider.notifier);
-    final state = ref.watch(homeNotifierProvider);
+    final notifier = ref.read(homeProvider.notifier);
+    final state = ref.watch(homeProvider);
     final bool isSmallScreen = !context.isLargerThanDesktop;
 
     return Scaffold(

@@ -15,4 +15,26 @@ class BaseResponse<T> with _$BaseResponse<T> {
 
   factory BaseResponse.fromJson(Map<String, dynamic> json) =>
       _$BaseResponseFromJson(json);
+
+  @override
+  // TODO: implement data
+  get data => throw UnimplementedError();
+
+  @override
+  // TODO: implement message
+  List<String> get message => throw UnimplementedError();
+
+  @override
+  // TODO: implement status
+  int get status => throw UnimplementedError();
+
+  @override
+  // TODO: implement success
+  bool get success => throw UnimplementedError();
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson
+    throw UnimplementedError();
+  }
 }

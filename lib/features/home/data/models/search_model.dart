@@ -14,4 +14,26 @@ class SearchModel with _$SearchModel {
 
   factory SearchModel.fromJson(Map<String, dynamic> json) =>
       _$SearchModelFromJson(json);
+
+  @override
+  // TODO: implement definition
+  String? get definition => throw UnimplementedError();
+
+  @override
+  // TODO: implement id
+  int get id => throw UnimplementedError();
+
+  @override
+  // TODO: implement title
+  String get title => throw UnimplementedError();
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson
+    throw UnimplementedError();
+  }
+
+  @override
+  // TODO: implement type
+  String get type => throw UnimplementedError();
 }

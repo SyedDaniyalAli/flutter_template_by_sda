@@ -12,4 +12,13 @@ class HomeState with _$HomeState {
     required bool searchByDefinition,
     // required Pagination? pagination,
   }) = _HomeState;
+
+  @override
+  // TODO: implement searchByDefinition
+  bool get searchByDefinition => throw UnimplementedError();
+
+  @override
+  // TODO: implement searchResponse
+  AsyncValue<List<SearchModel>> get searchResponse =>
+      throw UnimplementedError();
 }
